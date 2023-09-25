@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMask Login Example (Client)</title>
+</head>
+<body>
+<h1>MetaMask Login Example (Client)</h1>
+<button id="loginButton">Login with MetaMask</button>
+
+<script>
+  // Function to initiate the MetaMask login process
+  async function loginWithMetaMask() {
+    try {
+      // Check if MetaMask is installed and connected
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const address = accounts[0];
+
+        // Create a message to sign (usually a nonce)
+        const message = '0xBEEFBEEF';
+
+        // Sign the message with MetaMask
+        const signature = await window.ethereum.request({
+          method: 'personal_sign',
+          params: [message, address],
+        });
+
+        // Send the Ethereum address and signature to the server
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ address, signature, message }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const token = data.token;
+          alert(`Logged in with token: ${token}`);
+        } else {
+          alert('Login failed. Please try again.');
+        }
+      } else {
+        alert('MetaMask is not installed or not connected.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while logging in with MetaMask.');
+    }
+  }
+
+  // Attach the login action to the button click event
+  document.getElementById('loginButton').addEventListener('click', loginWithMetaMask);
+</script>
+</body>
+</html>
