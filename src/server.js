@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 const secretKey = 'w87LqcTUMeA7U8v@#yEEZX2KfH@G9mWxxx';
 
 // Mock user database (you should use a real database)
-const users = {};
+const users = [];
 
 // Middleware to verify MetaMask signature
 function verifySignature(req, res, next) {
@@ -31,8 +31,14 @@ function verifySignature(req, res, next) {
     //TODO clear up the parsing mismatch
     const senderAddress = ethUtil.pubToAddress(publicKey).toString('hex');
 
-    if (senderAddress.toLowerCase() === address.toLowerCase()) {
-        // Signature is valid
+    if (senderAddress.toLowerCase() === address.replace(/^0x/, '').toLowerCase()) {
+        // add the user to the DB, if its not there already
+        if (!users.includes(senderAddress.toLowerCase())) {
+            // Add the user 'Bob' to the array.
+            users.push(senderAddress.toLowerCase());
+        }
+
+        // Signature is valida
         req.senderAddress = senderAddress;
         return next();
     } else {
@@ -45,10 +51,12 @@ app.post('/login', verifySignature, (req, res) => {
     const { senderAddress } = req;
 
     // Check if the user is already registered
-    if (users[senderAddress]) {
+
+    if (users.includes(senderAddress.toLowerCase())) {
         // User exists, generate a JWT token (you should use a real authentication library)
         const token = generateAuthToken(senderAddress);
-        return res.json({ token });
+        return res.status(200).json({ token });
+        //return res.json({ token });
     } else {
         // User is not registered, you may choose to register them
         return res.status(401).json({ error: 'User not registered' });
