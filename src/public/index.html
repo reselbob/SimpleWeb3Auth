@@ -20,7 +20,10 @@
 
         // Create a message to sign (usually a nonce)
         //const message = '0xBEEFBEEF';
-        const message = generateRandomHexNonce(16);
+        //const message = generateRandomHexNonce(16);
+        const greeting = "You are about to login to a really cool site.";
+        const nonce = generateRandomHexNonce(16);
+        const message = `Login: ${greeting}\nNonce: ${nonce}`;
 
         // Sign the message with MetaMask
         const signature = await window.ethereum.request({
@@ -35,6 +38,7 @@
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ address, signature, message }),
+          //body: JSON.stringify({ address, signature, message }),
         });
 
         if (response.ok) {

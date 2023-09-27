@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const ethUtil = require('ethereumjs-util');
+const sigUtil = require('eth-sig-util');
 const path = require('path'); // Required for file paths
 
 app.use(bodyParser.json());
@@ -12,14 +13,47 @@ const secretKey = 'w87LqcTUMeA7U8v@#yEEZX2KfH@G9mWxxx';
 // Mock user database (you should use a real database)
 const users = [];
 
+function extractNonce(inputString){
+    // Split the string into lines
+    const lines = inputString.split('\n');
+
+// Initialize a variable to store the Nonce value
+    let nonceValue = null;
+
+// Iterate through the lines to find the line containing "Nonce"
+    for (const line of lines) {
+        if (line.includes("Nonce:")) {
+            // Extract the Nonce value from the line
+            const parts = line.split("Nonce:");
+            if (parts.length === 2) {
+                nonceValue = parts[1].trim();
+                break; // Stop searching once the Nonce is found
+            }
+        }
+    }
+
+    return nonceValue;
+}
+
 // Middleware to verify MetaMask signature
 function verifySignature(req, res, next) {
     const { address, signature, message } = req.body;
 
+    const senderAddress = sigUtil.recoverPersonalSignature({
+        data: message,
+        sig: signature,
+    });
+
+    /*
+    //const nonce = extractNonce(message);
+    const nonce = message;
+
+
+
     // Verify the signature using eth-sig-util
-    const msgBuffer = ethUtil.toBuffer(message);
+    const msgBuffer = ethUtil.toBuffer(nonce);
     const msgHash = ethUtil.hashPersonalMessage(msgBuffer);
-    const signatureBuffer = ethUtil.toBuffer(signature);
+    //const signatureBuffer = ethUtil.toBuffer(signature);
     const sigParams = ethUtil.fromRpcSig(signature);
     const publicKey = ethUtil.ecrecover(
         msgHash,
@@ -29,9 +63,9 @@ function verifySignature(req, res, next) {
     );
     //const publicKey = ethUtil.ecrecover(msgHash, signatureBuffer, 0);
     //TODO clear up the parsing mismatch
-    const senderAddress = ethUtil.pubToAddress(publicKey).toString('hex');
-
-    if (senderAddress.toLowerCase() === address.replace(/^0x/, '').toLowerCase()) {
+    //const senderAddress = ethUtil.pubToAddress(publicKey).toString('hex');
+*/
+    if (senderAddress.toLowerCase() === address.toLowerCase()) {
         // add the user to the DB, if its not there already
         if (!users.includes(senderAddress.toLowerCase())) {
             // Add the user 'Bob' to the array.
