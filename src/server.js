@@ -43,28 +43,6 @@ function verifySignature(req, res, next) {
         data: message,
         sig: signature,
     });
-
-    /*
-    //const nonce = extractNonce(message);
-    const nonce = message;
-
-
-
-    // Verify the signature using eth-sig-util
-    const msgBuffer = ethUtil.toBuffer(nonce);
-    const msgHash = ethUtil.hashPersonalMessage(msgBuffer);
-    //const signatureBuffer = ethUtil.toBuffer(signature);
-    const sigParams = ethUtil.fromRpcSig(signature);
-    const publicKey = ethUtil.ecrecover(
-        msgHash,
-        sigParams.v,
-        sigParams.r,
-        sigParams.s
-    );
-    //const publicKey = ethUtil.ecrecover(msgHash, signatureBuffer, 0);
-    //TODO clear up the parsing mismatch
-    //const senderAddress = ethUtil.pubToAddress(publicKey).toString('hex');
-*/
     if (senderAddress.toLowerCase() === address.toLowerCase()) {
         // add the user to the DB, if its not there already
         if (!users.includes(senderAddress.toLowerCase())) {
