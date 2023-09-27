@@ -19,7 +19,8 @@
         const address = accounts[0];
 
         // Create a message to sign (usually a nonce)
-        const message = '0xBEEFBEEF';
+        //const message = '0xBEEFBEEF';
+        const message = generateRandomHexNonce(16);
 
         // Sign the message with MetaMask
         const signature = await window.ethereum.request({
@@ -51,7 +52,29 @@
       alert('An error occurred while logging in with MetaMask.');
     }
   }
+  function generateRandomHexNonce(length) {
+    if (typeof length !== 'number' || length <= 0) {
+      throw new Error('Invalid length for nonce');
+    }
 
+    // Calculate the number of bytes needed for the desired hex length
+    const numBytes = Math.ceil(length / 2);
+
+    // Generate random bytes
+    const randomBytes = new Uint8Array(numBytes);
+    window.crypto.getRandomValues(randomBytes);
+
+    // Convert random bytes to a hex string
+    let hexNonce = '';
+    for (let i = 0; i < numBytes; i++) {
+      hexNonce += ('00' + randomBytes[i].toString(16)).slice(-2);
+    }
+
+    // Trim to the desired length
+    hexNonce = hexNonce.slice(0, length);
+
+    return '0x' + hexNonce;
+  }
   // Attach the login action to the button click event
   document.getElementById('loginButton').addEventListener('click', loginWithMetaMask);
 </script>
