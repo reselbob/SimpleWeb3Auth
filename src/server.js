@@ -47,7 +47,11 @@ app.post('/login', verifySignature, (req, res) => {
     if (users.includes(senderAddress.toLowerCase())) {
         // User exists, generate a JWT token (you should use a real authentication library)
         const token = generateAuthToken(senderAddress);
-        return res.status(200).json({token});
+        // Check to see if the sender address is a known profile.
+        let profile;
+        const matchingProfile = profiles.find(obj => obj.address === senderAddress);
+        if(matchingProfile) profile = { firstName, lastName, email } = matchingProfile;
+        return res.status(200).json({token, profile});
         //return res.json({ token });
     } else {
         // User is not registered, you may choose to register them

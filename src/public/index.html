@@ -14,7 +14,7 @@
         }
 
         #profile {
-            display: block;
+            display: none;
         }
         .readonly {
             background-color: #eee;
@@ -50,6 +50,7 @@
 
 <script>
     let loginToken = '';
+    let profile = {};
 
     function setLoginToken(token) {
         loginToken = token;
@@ -57,6 +58,14 @@
 
     function getLoginToken() {
         return loginToken
+    }
+
+    function setProfile(profile) {
+        profile = profile;
+    }
+
+    function getProfile() {
+        return profile
     }
 
     // Function to initiate the MetaMask login process
@@ -88,10 +97,18 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    const token = data.token;
+                    const {token, profile} = data;
                     setLoginToken(token);
-                    document.getElementById("loginResponse").innerText = "You are logged in.";
-                    makeProfileVisible();
+                    setProfile(profile);
+
+                    if(!profile)
+                    {
+                        showProfileUI();
+                    }else{
+                        hideProfileUI();
+                        document.getElementById("loginResponse").innerText = `Welcome ${profile.firstName} ${profile.lastName}`;
+                    }
+
                     //alert(`Logged in with token: ${token}`);
                 } else {
                     document.getElementById("loginResponse").innerText = "Login failed. Please try again."
@@ -131,6 +148,18 @@
         return '0x' + hexNonce;
     }
 
+    function readOnlyProfileUI() {
+        // After saving the data, make the textboxes readonly and grayed out
+        document.getElementById('firstName').readOnly = true;
+        document.getElementById('firstName').classList.add('readonly');
+
+        document.getElementById('lastName').readOnly = true;
+        document.getElementById('lastName').classList.add('readonly');
+
+        document.getElementById('email').readOnly = true;
+        document.getElementById('email').classList.add('readonly');
+    }
+
     async function processProfileData() {
         // Access form data
         const formData = {
@@ -151,25 +180,17 @@
                 },
                 body: JSON.stringify(formData)
             });
-            // After saving the data, make the textboxes readonly and grayed out
-            document.getElementById('firstName').readOnly = true;
-            document.getElementById('firstName').classList.add('readonly');
-
-            document.getElementById('lastName').readOnly = true;
-            document.getElementById('lastName').classList.add('readonly');
-
-            document.getElementById('email').readOnly = true;
-            document.getElementById('email').classList.add('readonly');
+            readOnlyProfileUI();
 
             if(res.status === 200)document.getElementById("postResponse").innerText = "Profile Saved";
             if(res.status === 201)document.getElementById("postResponse").innerText = "Profile Already Exists";
         } catch (error) {
             document.getElementById("postResponse").innerText = `${error.message}`
         }
-        makeProfileVisible();
+        showProfileUI();
     }
 
-    function makeProfileVisible() {
+    function showProfileUI() {
         // Get the div element by its ID
         const profileDiv = document.getElementById('profile');
 
@@ -177,8 +198,17 @@
         profileDiv.style.display = 'block';
     }
 
+    function hideProfileUI() {
+        // Get the div element by its ID
+        const profileDiv = document.getElementById('profile');
+
+        // Change the display style to 'block' to make it visible
+        profileDiv.style.display = 'none';
+    }
+
     // Attach the login action to the button click event
     document.getElementById('loginButton').addEventListener('click', loginWithMetaMask);
+  hideProfileUI();
 </script>
 </body>
 </html>
