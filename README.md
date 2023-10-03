@@ -59,7 +59,7 @@ You'll see the following web page.
 
 ![Screenshot 2023-10-03 at 11 08 07 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/f550f9be-b9fd-482f-8858-0f631f1d6afe)
 
-**Step 2:** Click the button labeled `Login wiht MetaMask`. Clicking the button will present the MetaMask plugin UI.
+**Step 2:** Click the button labeled `Login with MetaMask`. Clicking the button will present the MetaMask plugin UI.
 
 ![Screenshot 2023-10-03 at 11 29 26 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/c19ad37a-67f8-4b10-bf18-2ebc8f241652)
 
