@@ -48,6 +48,7 @@ http://localhost:3111
 ```
 
 You'll the following web page:
+
 ![Screenshot 2023-10-03 at 11 08 07 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/f550f9be-b9fd-482f-8858-0f631f1d6afe)
 
 
