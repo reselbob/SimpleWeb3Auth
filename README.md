@@ -69,7 +69,7 @@ Clicking the `Sign` button will make it so that you'll be authenticated to the d
 
 # Declaring a profile
 
-The first time you login you will be asked to declare a profile by filling in the following form:
+The first time you login to the demonstation application you will be asked to declare a profile by filling in the following form:
 
 ![Screenshot 2023-10-03 at 11 29 57 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/6fe5bdca-e7f7-4b51-9b7f-9f6db1003eab)
 
