@@ -43,7 +43,7 @@ In a terminal window execute the following command:
 npm start
 ```
 
-You''' see the following output:
+You'll see the following output:
 
 `Server is running on port 3111`
 
