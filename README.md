@@ -12,7 +12,6 @@ The web page HTML is located at [./src/public/index.html](./src/public/index.htm
 
 # Installing the application
 
-
 In a terminal window execute the following command:
 
 ```bash
@@ -21,11 +20,10 @@ git clone https://github.com/reselbob/SimpleWeb3Auth.git
 
 The application's source code will be downloaded into a folder named `SimpleWeb3Auth`.
 
-# Running the application
 
-## Step 1: Install the application dependencies
+# Installing the application dependencies
 
-In a terminal window execute the following commands:
+**Step 1:** In a terminal window execute the following commands:
 
 ```bash
 cd ./SimpleWeb3Auth
@@ -35,31 +33,37 @@ cd ./SimpleWeb3Auth
 npm install
 ```
 
+# Starting the Web Server
+
 In a terminal window execute the following command:
 
-## Step 2: start the web server
+**Step 1:** In a terminal window execute the following command:
 
 ```bash
 npm start
 ```
 
-## Step 3: Access the application's web page.
+You''' see the following output:
 
-Using a browser that has the MetaMask plugin installed, go to the URL
+`Server is running on port 3111`
+
+# Athenticating to the application using MetaMask
+
+**Step 1:** Using a browser that has the MetaMask plugin installed, go to the URL
 
 ```bash
 http://localhost:3111
 ```
 
-You'll the following web page. 
+You'll see the following web page. 
 
 ![Screenshot 2023-10-03 at 11 08 07 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/f550f9be-b9fd-482f-8858-0f631f1d6afe)
 
-Click the button labeled `Login wiht MetaMask`. Clicking the button will present the MetaMask plugin UI.
+**Step 2:** Click the button labeled `Login wiht MetaMask`. Clicking the button will present the MetaMask plugin UI.
 
 ![Screenshot 2023-10-03 at 11 29 26 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/c19ad37a-67f8-4b10-bf18-2ebc8f241652)
 
-Click the button labeled `Sign` in the lower right of the MetaMask plugin to log in to the web site.
+**Step 3:** Click the button labeled `Sign` in the lower right of the MetaMask plugin to log in to the web site.
 
 # Declaring a profile
 
@@ -67,15 +71,17 @@ The first time you login you will be asked to declare a profile by filling in th
 
 ![Screenshot 2023-10-03 at 11 29 57 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/6fe5bdca-e7f7-4b51-9b7f-9f6db1003eab)
 
-Fill in the form and click the button labeled `Submit User Profile`.
+**Step 1:** Fill in the data fields in the form.
 
 ![Screenshot 2023-10-03 at 11 31 00 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/48d81246-4332-4486-a25f-40d82bbffe4d)
 
+**Step 2:** Click the button labeled `Submit User Profile`.
+
 The profile will be saved and the declaration form will become read only.
 
-Refresh the web page in your web browser and login once again.
+**Step 3:** Refresh the web page in your web browser and login once again.
 
-This time because the application has record of your profile, you;ll be presented with a greeting particular to your profile along with the account address you used with MetaMask.
+This time because the application has record of your profile, you'll be presented with a greeting particular to your profile along with the account address you used with MetaMask.
 
 ![Screenshot 2023-10-03 at 11 31 20 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/489305fa-a06e-4dbe-b954-5b2a7fe52e97)
 
