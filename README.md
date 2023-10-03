@@ -7,8 +7,10 @@ The source code for the web server is located at [./src/server.js](./src/server.
 
 The web page HTML is located at [./src/public/index.html](./src/public/index.html). The client side logic used by the HTML in the web page is located at [./src/public/functions.js](./src/public/functions.js).
 
-|**IMPORTANT:**<br/>To access the application's web page, this project requires a web browser with the MetaMask plugin installed. For instructions on how install MetaMask in a web browser go [here](https://metamask.io/download/).|
-|:--------------|
+# System requirements
+
+- [Node.js®](nodejs.org) needs to be installed on the machine running the source code.
+- A web browser with the MetaMask plugin installed. For instructions on how install MetaMask in a web browser go [here](https://metamask.io/download/).
 
 # Installing the application
 
