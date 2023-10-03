@@ -65,6 +65,8 @@ You'll see the following web page.
 
 **Step 3:** Click the button labeled `Sign` in the lower right of the MetaMask plugin to log in to the web site.
 
+Clicking the `Sign` button will make it so that you'll be authenticated to the demonstration web site using MetaMask's validation mechanisms.
+
 # Declaring a profile
 
 The first time you login you will be asked to declare a profile by filling in the following form:
