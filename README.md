@@ -55,6 +55,33 @@ You'll the following web page.
 
 ![Screenshot 2023-10-03 at 11 08 07 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/f550f9be-b9fd-482f-8858-0f631f1d6afe)
 
-Click the button labeled `Login wiht MetaMask`. Clicking the button will present the MetaMask plugin UI. You'll be asked to sign in.
+Click the button labeled `Login wiht MetaMask`. Clicking the button will present the MetaMask plugin UI.
+
+![Screenshot 2023-10-03 at 11 29 26 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/c19ad37a-67f8-4b10-bf18-2ebc8f241652)
+
+Click the button labeled `Sign` in the lower right of the MetaMask plugin to log in to the web site.
+
+# Declaring a profile
+
+The first time you login you will be asked to declare a profile by filling in the following form:
+
+![Screenshot 2023-10-03 at 11 29 57 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/6fe5bdca-e7f7-4b51-9b7f-9f6db1003eab)
+
+Fill in the form and click the button labeled `Submit User Profile`.
+
+![Screenshot 2023-10-03 at 11 31 00 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/48d81246-4332-4486-a25f-40d82bbffe4d)
+
+The profile will be saved and the declaration form will become read only.
+
+Refresh the web page in your web browser and login once again.
+
+This time because the application has record of your profile, you;ll be presented with a greeting particular to your profile along with the account address you used with MetaMask.
+
+![Screenshot 2023-10-03 at 11 31 20 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/489305fa-a06e-4dbe-b954-5b2a7fe52e97)
+
+
+
+
+
 
 
