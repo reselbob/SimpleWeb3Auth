@@ -33,7 +33,7 @@ cd ./SimpleWeb3Auth
 npm install
 ```
 
-# Starting the Web Server
+# Starting the web server
 
 In a terminal window execute the following command:
 
