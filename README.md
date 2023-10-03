@@ -51,6 +51,10 @@ Using a browser that has the MetaMask plugin installed, go to the URL
 http://localhost:3111
 ```
 
-You'll the following web page:
+You'll the following web page. 
 
 ![Screenshot 2023-10-03 at 11 08 07 AM](https://github.com/reselbob/SimpleWeb3Auth/assets/1110569/f550f9be-b9fd-482f-8858-0f631f1d6afe)
+
+Click the button labeled `Login wiht MetaMask`. Clicking the button will present the MetaMask plugin UI. You'll be asked to sign in.
+
+
